@@ -1,0 +1,6 @@
+# Netzwerk-Mitschnitte enthalten Tokens und persönliche Daten
+*.har
+
+# Build-Artefakte
+*.zip
+*.xpi

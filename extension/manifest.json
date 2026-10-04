@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "DAZN Regional Ad Mute",
+  "version": "1.1.0",
+  "description": "Mutet den Tab, während DAZN regionale (Google-DAI) Werbung in NFL-Streams einblendet.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dazn-regional-ad-mute@local",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "permissions": ["tabs", "storage"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "action": {
+    "default_title": "DAZN Ad Mute: an (klicken zum Umschalten)"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.dazn.com/*"],
+      "js": ["page-hook.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://*.dazn.com/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
